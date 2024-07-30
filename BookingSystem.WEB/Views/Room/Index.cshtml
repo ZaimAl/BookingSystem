@@ -1,0 +1,42 @@
+﻿@using BookingSystem.DataModel.Master.Room;
+@model IndexRoomVM;
+@{
+    ViewData["Title"] = "Master Room";
+}
+
+<a asp-action="Upsert" class="blue-button delete-button">Add New</a>
+<div class="grid-container category-index">
+    <table class="table-info">
+        <thead >
+            <tr>
+                <th>Action</th>
+                <th>Name</th>
+                <th>Floor</th>
+                <th>Description</th>
+                <th>LocationId</th>
+                <th>Capasity</th>
+                <th>ColorRoom</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var row in Model.list)
+            {
+                <tr>
+                    <td>
+                        <a asp-action="Upsert" asp-route-id="@row.ID"><i class="fas fa-edit"></i></a>
+                        <a asp-action="Delete" asp-route-id="@row.ID"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                    <td>@row.Name</td>
+                    <td>@row.Floor</td>
+                    <td>@row.Description</td>
+                    <td>@row.LocationID</td>
+                    <td>@row.Capasity</td>
+                    <td>
+                        <input type="color" value="@row.ColorRoom" disabled>@row.ColorRoom
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

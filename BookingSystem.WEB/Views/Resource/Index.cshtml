@@ -1,0 +1,43 @@
+﻿@using BookingSystem.DataModel.Master.Resource;
+@model IndexResVM;
+@{
+    ViewData["Title"] = "Master Resource";
+}
+<a asp-action="Upsert" class="blue-button delete-button">Add New</a>
+<div class="grid-container category-index">
+    <table class="table-info">
+        <thead >
+            <tr>
+                <th>Action</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Icon</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var row in Model.list)
+            {
+                <tr>
+                    <td>
+                        <a asp-action="Upsert" asp-route-id="@row.ID"><i class="fas fa-edit"></i></a>
+                        <a asp-action="Delete" asp-route-id="@row.ID"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                    <td>@row.Name</td>
+                    <td>@row.Status</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(row.Icon))
+                        {
+                            <img src="http://localhost:5156/api/Resource/images/@row.Icon" alt="Image" />
+                        }
+                        else
+                        {
+                            <img src="path/to/default/image.jpg" alt="Default Image" />
+                        }
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BookingSystem.WEB</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/font-awesome.css" />
+    <link rel="stylesheet" href="~/css/normalize.css" />
+    <link rel="stylesheet" href="~/BookingSystem.WEB.styles.css" asp-append-version="true" />
+</head>
+<body class="main-body">
+    <header>
+        <div class="head-info">
+            <div class="bread-crumbs">
+                test
+            </div>
+            <div class="user-wrapper">
+                <div class="user">
+                    <span class="full-name">Welcome</span>
+                    <span class="role">Administrator As Admin</span>
+                </div>
+                <div class="date">
+                    <i class="fas fa-calendar-alt"></i>
+                    <div>Kamis 25 Juli 2024</div>
+                </div>
+                <div class="sign-out">
+                    <i class="fas fa-sign-out-alt"></i><div>Logout</div>
+                </div>
+            </div>
+        </div>
+        <div class="menu-info">@ViewData["Title"]</div>
+    </header>@* 
+    <nav>Test</nav> *@
+    @await Component.InvokeAsync("NavMenu")
+
+    <main>
+        @RenderBody()
+    </main>
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - BookingSystem.WEB - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

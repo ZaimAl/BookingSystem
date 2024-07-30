@@ -1,0 +1,43 @@
+﻿@using BookingSystem.DataModel.Master.BookingCode;
+@model CreateEditBCVM
+
+@{
+    ViewData["Title"] = "Booking Code Form";
+}
+
+<form method="post" asp-action="Upsert" class="upsert-form">
+    @if (Model.ID > 0)
+    {
+            <input type="hidden" asp-for="ID" />
+    }
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    Booking Code*
+                </td>
+                <td>
+                    <input asp-for="BookingCode" />
+                    <span asp-validation-for="BookingCode"></span>
+                </td>
+            </tr>
+            <tr>
+                <td >
+                    IsActive*
+                </td>
+                <td>
+                    <input asp-for="IsActive"></input>
+                    <span asp-validation-for="IsActive"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    <button class="blue-button" type="submit">Save</button>
+                    <button class="blue-button" asp-action="Index">Back</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>

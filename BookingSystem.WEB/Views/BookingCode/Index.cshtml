@@ -1,0 +1,30 @@
+﻿@using BookingSystem.DataModel.Master.BookingCode;
+@model IndexBCVM;
+@{
+    ViewData["Title"] = "Master Booking Code";
+}
+
+<a asp-action="Upsert" class="blue-button delete-button">Add New</a>
+<div class="grid-container category-index">
+    <table class="table-info">
+        <thead >
+            <tr>
+                <th>Action</th>
+                <th>Booking Code</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var row in Model.list)
+            {
+                <tr>
+                    <td>
+                        <a asp-action="Upsert" asp-route-id="@row.ID"><i class="fas fa-edit"></i></a>
+                        <a asp-action="Delete" asp-route-id="@row.ID"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                    <td>@row.BookingCode</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,109 @@
+﻿@using BookingSystem.DataModel.Master.Room;
+@model CreateEditRoomVM
+
+@{
+    ViewData["Title"] = "Room Form";
+}
+
+<form method="post" asp-action="Upsert" class="upsert-form">
+    @if (Model.ID > 0)
+    {
+        <input type="hidden" asp-for="ID" />
+    }
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    Room Name
+                </td>
+                <td>
+                    <input asp-for="Name" />
+                    <span asp-validation-for="Name"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Floor*
+                </td>
+                <td>
+                    <input asp-for="Floor" />
+                    <span asp-validation-for="Floor"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Description Room
+                </td>
+                <td>
+                    <textarea asp-for="Description"></textarea>
+                    <span asp-validation-for="Description"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Location*
+                </td>
+                <td>
+                    <input asp-for="LocationID" />
+                    <span asp-validation-for="LocationID"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Maximum Capacity
+                </td>
+                <td>
+                    <input asp-for="Capasity" />
+                    <span asp-validation-for="Capasity"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Resource
+                </td>
+                <td>
+                    <table class="table-form">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Resource Name</th>
+                            </tr>
+                        </thead>
+                        <tbody id="codes-container">
+                            @for (int i = 0; i < Model.RoomRes.Count; i++)
+                            {
+                                <tr>
+                                    <input type="hidden" asp-for="@Model.RoomRes[i].ID" />
+                                    <input type="hidden" asp-for="@Model.RoomRes[i].ResourceId" />
+                                    <td>
+                                        <input type="checkbox" asp-for="@Model.RoomRes[i].IsHave" />
+                                    </td>
+                                    <td>
+                                        @Model.RoomRes[i].ResourceName
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Color Room*
+                </td>
+                <td>
+                    <input type="color" id="colorPicker" asp-for="ColorRoom" />
+                    <span asp-validation-for="ColorRoom"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    <button class="blue-button" type="submit">Save</button>
+                    <a class="blue-button" asp-action="Index">Back</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>

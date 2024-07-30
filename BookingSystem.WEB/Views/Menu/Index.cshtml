@@ -1,0 +1,24 @@
+﻿@using BookingSystem.DataModel.Master.Menu;
+@model List<IndexMenu>
+@{
+    ViewData["Title"] = "Nav";
+}
+
+<nav class="menu">
+    @if (Model != null)
+    {
+        @foreach (var header in Model.Where(m => m.IsHeader > 0))
+        {
+            <div class="menu-header">
+                <h3>@header.Name</h3>
+                <ul>
+                    @foreach (var item in Model.Where(m => m.IsHeader == 0 && m.Sequence > header.Sequence ))
+                    {
+                        <li>@item.Name</li>
+                    }
+                </ul>
+            </div>
+        }
+    }
+
+</nav>
