@@ -1,20 +1,13 @@
 ﻿@using BookingSystem.DataModel.Master.Resource;
-@model IndexResVM;
+@model MstIndexResVM;
 @{
     ViewData["Title"] = "Master Resource";
+    var columnHeads = new string[] { "Action", "Name", "Status", "Icon" };
 }
 <a asp-action="Upsert" class="blue-button delete-button">Add New</a>
 <div class="grid-container category-index">
     <table class="table-info">
-        <thead >
-            <tr>
-                <th>Action</th>
-                <th>Name</th>
-                <th>Status</th>
-                <th>Icon</th>
-            </tr>
-
-        </thead>
+        <thead columns="@columnHeads" />
         <tbody>
             @foreach (var row in Model.list)
             {
@@ -39,5 +32,9 @@
                 </tr>
             }
         </tbody>
-    </table>
+        <pagination colspan="4" page="@ViewBag.CurrentPage" total-pages="1" controller="Resource" />
+        @* parameters="@parameters" *@
+        </table>
 </div>
+
+

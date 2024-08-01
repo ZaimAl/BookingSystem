@@ -26,4 +26,6 @@ public partial class MstResourceCode
     public string? ResourceCode { get; set; }
 
     public virtual MstResource Resource { get; set; } = null!;
+
+    public virtual ICollection<TrsResource> TrsResources { get; set; } = new List<TrsResource>();
 }

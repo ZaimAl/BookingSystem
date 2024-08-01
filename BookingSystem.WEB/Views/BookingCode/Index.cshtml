@@ -2,18 +2,15 @@
 @model IndexBCVM;
 @{
     ViewData["Title"] = "Master Booking Code";
+
+    var columnHeads = new string[] { "Action", "BookingCode"};
 }
 
 <a asp-action="Upsert" class="blue-button delete-button">Add New</a>
 <div class="grid-container category-index">
     <table class="table-info">
-        <thead >
-            <tr>
-                <th>Action</th>
-                <th>Booking Code</th>
-            </tr>
 
-        </thead>
+        <thead columns="@columnHeads" />
         <tbody>
             @foreach (var row in Model.list)
             {
@@ -26,5 +23,6 @@
                 </tr>
             }
         </tbody>
+        <pagination colspan="2" page="@ViewBag.CurrentPage" total-pages="1" controller="Resource" />
     </table>
 </div>

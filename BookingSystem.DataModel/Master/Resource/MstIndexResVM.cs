@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace BookingSystem.DataModel.Master.Resource
 {
-    public class IndexResVM
+    public class MstIndexResVM
     {
-        public List<ListResVM> list { get; set; }= new List<ListResVM>();
+        public List<MstListResVM> list { get; set; }= new List<MstListResVM>();
     }
 }

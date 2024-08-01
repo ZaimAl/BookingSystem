@@ -1,6 +1,6 @@
 ﻿using BookingSystem.DataModel.Master.BookingCode;
 using BookingSystem.DataModel.Master.Room;
-using BookingSystem.Provider;
+using BookingSystem.Master.Provider;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookingSystem.API.Controllers

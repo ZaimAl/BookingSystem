@@ -16,7 +16,7 @@ namespace BookingSystem.WEB.Controllers
         }
         public async Task<IActionResult> Index(int page = 1)
         {
-            var model = new IndexResVM();
+            var model = new MstIndexResVM();
             var client = _httpClientFactory.CreateClient();
             var url = $"http://localhost:5156/api/Resource?page={page}";
             var response = await client.GetAsync(url);
@@ -29,18 +29,19 @@ namespace BookingSystem.WEB.Controllers
                 };
                 try
                 {
-                    model = JsonSerializer.Deserialize<IndexResVM>(responseString, option);
+                    model = JsonSerializer.Deserialize<MstIndexResVM>(responseString, option);
                 }
                 catch (Exception ex)
                 {
                     return View("Error");
                 }
             }
+            ViewBag.CurrentPage = page;
             return View(model);
         }
         public async Task<IActionResult> Upsert(int id)
         {
-            var model = new CreateEditResVM();
+            var model = new MstCreateEditResVM();
             var client = _httpClientFactory.CreateClient();
             var url = $"http://localhost:5156/Api/Resource/{id}";
             if (id > 0)
@@ -55,7 +56,7 @@ namespace BookingSystem.WEB.Controllers
                     };
                     try
                     {
-                        model = JsonSerializer.Deserialize<CreateEditResVM>(responseString, option);
+                        model = JsonSerializer.Deserialize<MstCreateEditResVM>(responseString, option);
                     }
                     catch (Exception ex)
                     {
@@ -67,7 +68,7 @@ namespace BookingSystem.WEB.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Upsert(CreateEditResVM dto)
+        public async Task<IActionResult> Upsert(MstCreateEditResVM dto)
         {
             var client = _httpClientFactory.CreateClient();
             var url = $"http://localhost:5156/Api/Resource";

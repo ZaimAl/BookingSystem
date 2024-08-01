@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookingSystem.DataModel.Master.Resource
 {
-    public class CreateEditResCodMV
+    public class MstCreateEditResCodMV
     {
         public int ID { get; set; }
         public string? ResourceCode {  get; set; }

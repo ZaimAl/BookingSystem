@@ -34,4 +34,6 @@ public partial class MstRoom
     public virtual MstLocation? Location { get; set; }
 
     public virtual ICollection<MstRoomResource> MstRoomResources { get; set; } = new List<MstRoomResource>();
+
+    public virtual ICollection<TrsBooking> TrsBookings { get; set; } = new List<TrsBooking>();
 }

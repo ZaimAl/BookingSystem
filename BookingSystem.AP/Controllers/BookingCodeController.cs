@@ -1,5 +1,5 @@
 ﻿using BookingSystem.DataModel.Master.BookingCode;
-using BookingSystem.Provider;
+using BookingSystem.Master.Provider;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

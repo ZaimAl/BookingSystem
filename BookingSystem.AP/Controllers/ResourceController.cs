@@ -1,5 +1,5 @@
 ﻿using BookingSystem.DataModel.Master.Resource;
-using BookingSystem.Provider;
+using BookingSystem.Master.Provider;
 using DanCoffee.Web.Customer.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
@@ -10,9 +10,9 @@ namespace BookingSystem.API.Controllers
     [ApiController]
     public class ResourceController : ControllerBase
     {
-        private ResourceProvider ResProvider;
+        private MstResourceProvider ResProvider;
         private readonly IWebHostEnvironment _env;
-        public ResourceController(ResourceProvider resProvider, IWebHostEnvironment env)
+        public ResourceController(MstResourceProvider resProvider, IWebHostEnvironment env)
         {
             ResProvider = resProvider;
             _env = env;
@@ -44,7 +44,7 @@ namespace BookingSystem.API.Controllers
             }
         }
         [HttpPost]
-        public ActionResult CreateEdit(CreateEditResVM model)
+        public ActionResult CreateEdit(MstCreateEditResVM model)
         {
             try
             {
@@ -117,7 +117,7 @@ namespace BookingSystem.API.Controllers
             return File(image, contentType);
         }
 
-        private void FileHandler(CreateEditResVM dto,string url)
+        private void FileHandler(MstCreateEditResVM dto,string url)
         {
             IFormFile multipartFile = dto.file;
             bool isMultipartEmpty = multipartFile == null || multipartFile.Length == 0;

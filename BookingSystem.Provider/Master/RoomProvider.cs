@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace BookingSystem.Provider
+namespace BookingSystem.Master.Provider
 {
     public class RoomProvider
     {

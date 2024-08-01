@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookingSystem.Provider
+namespace BookingSystem.Master.Provider
 {
-    public class ResourceProvider
+    public class MstResourceProvider
     {
         private readonly BookingSystemContext _context;
 
-        public ResourceProvider(BookingSystemContext context)
+        public MstResourceProvider(BookingSystemContext context)
         {
             this._context = context;
         }
@@ -35,7 +35,7 @@ namespace BookingSystem.Provider
         {
             return _context.MstResourceCodes.SingleOrDefault(a => a.Id == id);
         }
-        public void InsertRes(CreateEditResVM model)
+        public void InsertRes(MstCreateEditResVM model)
         {
             var res = new MstResource
             {
@@ -60,7 +60,7 @@ namespace BookingSystem.Provider
             }
         }
 
-        public void UpdateRes(CreateEditResVM model)
+        public void UpdateRes(MstCreateEditResVM model)
         {
             var res = GetRes(model.ID);
             if (res != null)
@@ -96,11 +96,11 @@ namespace BookingSystem.Provider
             }
         }
 
-        public IndexResVM GetIndexBC(int page)
+        public MstIndexResVM GetIndexBC(int page)
         {
-            var indexRes = new IndexResVM();
+            var indexRes = new MstIndexResVM();
             var listRes = from a in AllResource()
-                         select new ListResVM
+                         select new MstListResVM
                          {
                              ID = a.Id,
                              Name = a.Name,
@@ -114,10 +114,10 @@ namespace BookingSystem.Provider
             indexRes.list = listRes.ToList();
             return indexRes;
         }
-        public CreateEditResVM GetOne(int id)
+        public MstCreateEditResVM GetOne(int id)
         {
             var getOne = GetRes(id);
-            var res = new CreateEditResVM();
+            var res = new MstCreateEditResVM();
             res.Status = getOne.Status;
             res.Icon = getOne.Icon;
             res.Name = getOne.Name;
@@ -125,11 +125,11 @@ namespace BookingSystem.Provider
             res.code = GetListResCode(res.ID);
             return res;
         }
-        public List<CreateEditResCodMV> GetListResCode(int resourceId)
+        public List<MstCreateEditResCodMV> GetListResCode(int resourceId)
         {
             var list=from a in AllResourceCode()
                      where a.ResourceId==resourceId
-                     select new CreateEditResCodMV
+                     select new MstCreateEditResCodMV
                      {
                          ID= a.Id,
                          IsActive=a.IsActive,
@@ -137,7 +137,7 @@ namespace BookingSystem.Provider
                      };
             return list.ToList();
         }
-        public void InsertResCod(CreateEditResCodMV model,int resourceId) 
+        public void InsertResCod(MstCreateEditResCodMV model,int resourceId) 
         {
             var resCod= new MstResourceCode
             {
@@ -150,7 +150,7 @@ namespace BookingSystem.Provider
             _context.MstResourceCodes.Add(resCod);
             _context.SaveChanges();
         }
-        public void UpdateResCod(CreateEditResCodMV model,int resourceId)
+        public void UpdateResCod(MstCreateEditResCodMV model,int resourceId)
         {
             var resCod = GetResCod(model.ID);
             if (resCod != null)

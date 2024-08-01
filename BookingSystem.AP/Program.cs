@@ -1,5 +1,5 @@
 using BookingSystem.DataAccsess.Models;
-using BookingSystem.Provider;
+using BookingSystem.Master.Provider;
 using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();   
 builder.Services.AddScoped<BookingCodeProvider>();
 builder.Services.AddScoped<LocationProvider>();
-builder.Services.AddScoped<ResourceProvider>();
+builder.Services.AddScoped<MstResourceProvider>();
 builder.Services.AddScoped<MenuProvider>();
 builder.Services.AddScoped<RoomProvider>();
 builder.Services.AddScoped<BookingSystemContext>();

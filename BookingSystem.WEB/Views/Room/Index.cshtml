@@ -2,23 +2,14 @@
 @model IndexRoomVM;
 @{
     ViewData["Title"] = "Master Room";
+
+    var columnHeads = new string[] { "Action", "Name", "Floor", "Description", "LocationId", "Capasity", "ColorRoom" };
 }
 
 <a asp-action="Upsert" class="blue-button delete-button">Add New</a>
 <div class="grid-container category-index">
     <table class="table-info">
-        <thead >
-            <tr>
-                <th>Action</th>
-                <th>Name</th>
-                <th>Floor</th>
-                <th>Description</th>
-                <th>LocationId</th>
-                <th>Capasity</th>
-                <th>ColorRoom</th>
-            </tr>
-
-        </thead>
+        <thead columns="@columnHeads" />
         <tbody>
             @foreach (var row in Model.list)
             {
@@ -37,6 +28,9 @@
                     </td>
                 </tr>
             }
+
         </tbody>
+
+        <pagination colspan="7" page="@ViewBag.CurrentPage" total-pages="1" controller="Resource" />
     </table>
 </div>

@@ -1,19 +1,15 @@
 ﻿@using BookingSystem.DataModel.Master.Menu;
 @model List<IndexMenu>
 
-<nav class="menu">
+<nav class="navbar">
     @if(Model !=null){
         @foreach (var header in Model.Where(m => m.IsHeader > 0))
         {
-            <div class="menu-header">
-                <h3>@header.Name</h3>
-                <ul>
-                    @foreach (var item in Model.Where(m => m.IsHeader == 0 && m.Sequence == header.Sequence ))
-                    {
-                        <li>@item.Name</li>
-                    }
-                </ul>
-            </div>
+            <div class="header">@header.Name</div>
+                @foreach (var item in Model.Where(m => m.IsHeader == 0 && m.Sequence == header.Sequence ))
+                {
+                <a class="body" asp-controller=@item.Functions asp-action="Index">@item.Name</a>
+                }
         }
     }
 

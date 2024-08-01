@@ -22,4 +22,6 @@ public partial class MstBookCode
     public DateTime? DelDate { get; set; }
 
     public int? DelBy { get; set; }
+
+    public virtual ICollection<TrsBooking> TrsBookings { get; set; } = new List<TrsBooking>();
 }

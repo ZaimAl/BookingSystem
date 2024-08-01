@@ -22,7 +22,7 @@ html {
     display: -ms-grid;
     display: grid;
     grid-template-columns: 200px 1fr;
-    grid-template-rows: 150px 750px 40px;
+    grid-template-rows: 150px 730px 40px;
     grid-template-areas: "top header"
         "nav main "
         "footer footer";
@@ -63,7 +63,6 @@ header > .menu-info {
 
 .user-wrapper {
     display: flex;
-    /* align-content: space-around; */
     align-items: center;
 }
 
@@ -97,12 +96,30 @@ header > .menu-info {
 .main-body > nav {
     background-color: #1356b8;
     color: #fff;
-    padding: 0px 0px 0 10px;
     font-weight: bolder;
     font-size: 16px;
     grid-area: nav;
-    justify-content: space-between;
-    align-items: center;
+}
+
+
+.navbar a {
+    width: 100%;
+    display: block;
+    padding: 7px;
+    box-sizing: border-box;
+    color: #ffffff;
+    background-color: #248cd6;
+    text-decoration: none;
+}
+
+    .navbar a:hover {
+        background-color: #1356b8;
+        cursor: pointer;
+    }
+
+.navbar .header {
+    background-color: #1356b8;
+    padding: 7px;
 }
 
 .main-body > main {
@@ -291,3 +308,36 @@ textarea {
     padding: 5px;
     margin: 15px;
 }
+
+.pagination-container {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+    .pagination-container .button-page {
+        width: 25px;
+        height: 25px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        cursor: pointer;
+        text-align: center;
+        margin-top: px;
+    }
+
+        .pagination-container .button-page.on-page {
+            background-color: #248cd6;
+            color: #fff;
+        }
+
+
+    .pagination-container .items-per-page {
+        margin: 0 10px;
+        width: 50px;
+    }
+
+    .pagination-container .total-items {
+        margin: 0 10px;
+    }
